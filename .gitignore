@@ -1,0 +1,25 @@
+# Ignore build files
+build/
+*.class
+
+# IDE
+.vscode/
+.idea/
+*.iml
+nbproject/
+nbbuild/
+dist/
+manifest.mf
+build.xml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation (keep only code)
+*.md
+!README.md
+*.txt
+*.puml
+*.tex
+*.ps1

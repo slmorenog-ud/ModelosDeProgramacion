@@ -14,6 +14,11 @@ public abstract class Contenido {
         this.plataforma = plataforma;
     }
 
+    // Permite cambiar la plataforma dinámicamente (requisito del taller)
+    public void setPlataforma(Plataforma plataforma) {
+        this.plataforma = plataforma;
+    }
+
     public void publicar() {
         plataforma.publicar(crearMensaje());
     }
