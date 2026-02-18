@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este repositorio presenta un ejemplo de implementación del **Patrón Observer** a través de la aplicación **WeatherStation**. El sistema simula una estación meteorológica que notifica automáticamente a múltiples displays cuando hay cambios en las mediciones de temperatura, humedad y presión.
+Este repositorio presenta un ejemplo de implementación del **Patrón Observer** a través de la aplicación **WeatherStation**. El sistema simula una estación meteorológica que notifica automáticamente a múltiples displays cuando hay cambios en las mediciones de temperatura, humedad y presión. En este ejercicio se implementa el Patrón Observer y aprovechando este patrón se agregan un Heat Index Display y un Pressure exclusive display.
 
 ## Patrón Observer
 
