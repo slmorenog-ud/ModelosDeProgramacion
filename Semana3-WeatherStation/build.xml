@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WeatherStation" default="default" basedir=".">
+    <description>Builds, tests, and runs the project WeatherStation.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <target name="-post-init">
+        <!-- Empty placeholder for easier customization. -->
+    </target>
+    
+    <target name="-pre-compile">
+        <!-- Empty placeholder for easier customization. -->
+    </target>
+    
+    <target name="-post-compile">
+        <!-- Empty placeholder for easier customization. -->
+    </target>
+</project>
