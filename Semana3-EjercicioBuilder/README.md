@@ -22,6 +22,7 @@ Implementación del **Patrón Builder** para la creación de hamburguesas person
 - Método `toString()` formateado
 
 ### Diagrama de Clases
+
 <img alt="DiagramaBuilder" src="https://github.com/user-attachments/assets/d2ab85a1-9d77-4971-a66e-8d9343fa8dd3" />
 
 
