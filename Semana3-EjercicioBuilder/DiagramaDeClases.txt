@@ -1,0 +1,164 @@
+═══════════════════════════════════════════════════════════════════════════════
+                        DIAGRAMA DE CLASES - PATRÓN BUILDER
+                           Sistema de Hamburguesas Personalizadas
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────┐
+│         <<Clase Producto>>          │
+│            Hamburger                │
+├─────────────────────────────────────┤
+│ - tipoPan: String (final)           │  ← ATRIBUTO OBLIGATORIO
+│ - tipoCarne: String (final)         │  ← ATRIBUTO OBLIGATORIO
+│ - queso: String (final)             │  ← ATRIBUTO OPCIONAL
+│ - ingredientes: List<String> (final)│  ← ATRIBUTO OPCIONAL
+├─────────────────────────────────────┤
+│ - Hamburger(builder: Builder)       │  ← Constructor PRIVADO
+│ + getTipoPan(): String              │
+│ + getTipoCarne(): String            │
+│ + getQueso(): String                │
+│ + getIngredientes(): List<String>   │
+│ + toString(): String                │
+└─────────────────────────────────────┘
+                 △
+                 │ construye
+                 │
+    ┌────────────┴─────────────┐
+    │                          │
+    │  <<Clase Builder>>       │
+    │   Hamburger.Builder      │
+    ├──────────────────────────┤
+    │ - tipoPan: String (final)│  ← OBLIGATORIO (final)
+    │ - tipoCarne: String (final)│ ← OBLIGATORIO (final)
+    │ - queso: String          │  ← OPCIONAL (no final)
+    │ - ingredientes: List     │  ← OPCIONAL (no final)
+    ├──────────────────────────┤
+    │ + Builder(pan, carne)    │  ← Recibe OBLIGATORIOS
+    │ + conQueso(String): Builder      │  ← Configura OPCIONAL
+    │ + agregarIngrediente(String): Builder │ ← Configura OPCIONAL
+    │ + agregarIngredientes(List): Builder  │ ← Configura OPCIONAL
+    │ + build(): Hamburger     │  ← Construye el producto
+    └──────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                             ROLES Y RESPONSABILIDADES
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ HAMBURGER (Producto)                                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Responsabilidad:                                                            │
+│   - Representa una hamburguesa personalizada                                │
+│   - Almacena el estado final del objeto                                     │
+│   - Proporciona acceso de solo lectura a sus atributos                      │
+│                                                                             │
+│ Características clave:                                                      │
+│   ✓ Constructor PRIVADO (solo accesible desde Builder)                      │
+│   ✓ Atributos FINAL (inmutabilidad)                                         │
+│   ✓ NO tiene setters (no se puede modificar)                                │
+│   ✓ Getters con copias defensivas (para colecciones)                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ HAMBURGER.BUILDER (Constructor)                                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Responsabilidad:                                                            │
+│   - Construir paso a paso una instancia de Hamburger                        │
+│   - Validar los atributos obligatorios                                      │
+│   - Proporcionar una interfaz fluida para configurar el objeto              │
+│                                                                             │
+│ Características clave:                                                      │
+│   ✓ Constructor recibe SOLO atributos obligatorios                          │
+│   ✓ Métodos fluidos (return this) para encadenar llamadas                   │
+│   ✓ Método build() retorna la instancia final                               │
+│   ✓ Validación de datos en el constructor                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                            FLUJO DE CONSTRUCCIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+    1. CREAR BUILDER                    2. CONFIGURAR OPCIONALES
+       con obligatorios                    mediante métodos fluidos
+            │                                      │
+            ▼                                      ▼
+    ┌────────────────┐              ┌──────────────────────┐
+    │ new Builder(   │              │  .conQueso("...")    │
+    │   "Pan",       │──────────────│  .agregarIngrediente │
+    │   "Carne"      │              │  .agregarIngrediente │
+    │ )              │              │  ...                 │
+    └────────────────┘              └──────────────────────┘
+                                              │
+                                              ▼
+                                    3. CONSTRUIR PRODUCTO
+                                       mediante build()
+                                              │
+                                              ▼
+                                    ┌──────────────────┐
+                                    │   .build()       │
+                                    └──────────────────┘
+                                              │
+                                              ▼
+                                    ┌──────────────────────────┐
+                                    │  Hamburger (INMUTABLE)   │
+                                    │  - Estado final          │
+                                    │  - No modificable        │
+                                    └──────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                          EJEMPLO DE USO DEL PATRÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+Hamburger hamburguesa = new Hamburger.Builder("Pan Brioche", "Carne de Res")
+                                ↑                    ↑             ↑
+                           Crear Builder      Obligatorio #1  Obligatorio #2
+
+        .conQueso("Queso Cheddar")
+               ↑           ↑
+        Método fluido   Opcional #1
+
+        .agregarIngrediente("Lechuga")
+               ↑                ↑
+        Método fluido       Opcional #2
+
+        .agregarIngrediente("Tomate")
+               ↑                ↑
+        Método fluido       Opcional #3
+
+        .build();
+           ↑
+    Construye el producto final (inmutable)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                     VENTAJAS DE ESTA IMPLEMENTACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ SEPARACIÓN DE RESPONSABILIDADES
+  - Hamburger: QUÉ es una hamburguesa
+  - Builder: CÓMO se construye una hamburguesa
+
+✓ OBLIGATORIOS VS OPCIONALES
+  - Obligatorios: En constructor del Builder (el compilador los valida)
+  - Opcionales: Mediante métodos fluidos (se llaman solo si se necesitan)
+
+✓ INMUTABILIDAD GARANTIZADA
+  - Atributos final
+  - Sin setters
+  - Copias defensivas en getters
+
+✓ CÓDIGO LEGIBLE Y AUTO-DOCUMENTADO
+  - Cada método describe qué configura
+  - Sintaxis natural y fluida
+
+✓ EXTENSIBILIDAD
+  - Agregar nuevos opcionales no rompe código existente
+  - Fácil mantener y evolucionar
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                           FIN DEL DIAGRAMA
+═══════════════════════════════════════════════════════════════════════════════
