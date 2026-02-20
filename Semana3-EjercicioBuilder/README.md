@@ -25,6 +25,7 @@ Implementación del **Patrón Builder** para la creación de hamburguesas person
 
 <img alt="DiagramaBuilder" src="https://github.com/user-attachments/assets/d2ab85a1-9d77-4971-a66e-8d9343fa8dd3" />
 
+## [Ejercicio escrito](https://github.com/slmorenog-ud/ModelosDeProgramacion/blob/main/Semana3-EjercicioBuilder/An%C3%A1lisisYJustificaci%C3%B3nDelPatr%C3%B3nBuilder.pdf)
 
 ### Clase `Hamburger.Builder`
 
