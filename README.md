@@ -6,3 +6,4 @@
   - [Taller Bridge (microclase)](https://github.com/slmorenog-ud/ModelosDeProgramacion/tree/main/Semana2-TallerBridge)
 - Semana 3
   - [Taller Observer (WeatherStation)](https://github.com/slmorenog-ud/ModelosDeProgramacion/tree/main/Semana3-WeatherStation)
+  - [Taller Builder (HamburgerMicroclase)](https://github.com/slmorenog-ud/ModelosDeProgramacion/tree/main/Semana3-EjercicioBuilder)
