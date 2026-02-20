@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="EjercicioBuilder-impl" default="default" basedir=".." xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc">
+    <fail message="Please build using Ant 1.8.0 or higher.">
+        <condition>
+            <not>
+                <antversion atleast="1.8.0"/>
+            </not>
+        </condition>
+    </fail>
+    <target name="default" depends="jar" description="Build whole project."/>
+    <target name="init">
+        <property file="nbproject/project.properties"/>
+        <property name="build.dir" value="build"/>
+        <property name="build.classes.dir" value="${build.dir}/classes"/>
+        <property name="dist.dir" value="dist"/>
+        <property name="dist.jar" value="${dist.dir}/EjercicioBuilder.jar"/>
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" includeantruntime="false" source="11" target="11"/>
+    </target>
+    <target name="jar" depends="compile">
+        <jar destfile="${dist.jar}" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="run" depends="jar">
+        <java jar="${dist.jar}" fork="true"/>
+    </target>
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+</project>

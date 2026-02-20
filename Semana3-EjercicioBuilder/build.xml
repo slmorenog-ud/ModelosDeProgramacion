@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="EjercicioBuilder" default="default" basedir=".">
+    <description>Builds, tests, and runs the project EjercicioBuilder.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <target name="default" depends="jar"/>
+    
+    <target name="run-main" depends="jar">
+        <java classname="Main" fork="true">
+            <classpath>
+                <pathelement location="${dist.jar}"/>
+            </classpath>
+        </java>
+    </target>
+</project>
