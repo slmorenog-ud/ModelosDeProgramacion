@@ -8,4 +8,4 @@
   - [Taller Observer (WeatherStation)](https://github.com/slmorenog-ud/ModelosDeProgramacion/tree/main/Semana3-WeatherStation)
   - [Taller Builder (HamburgerMicroclase)](https://github.com/slmorenog-ud/ModelosDeProgramacion/tree/main/Semana3-EjercicioBuilder)
 - Semana 4
-  - [Taller Observer (CoffeeCooperative)]() 
+  - [Taller Observer (CoffeeCooperative)](https://github.com/slmorenog-ud/ModelosDeProgramacion/tree/main/Semana4-CoffeeCooperative) 
